@@ -351,14 +351,15 @@ const events = [
   },
   {
     id: 30,
-    title: "Euro 2020 (joué en 2021)",
+    title: "Euro 2020 — Finale à Wembley",
     date: 'Juin-Juillet 2021',
     year: 2021,
     description:
-      "Reporté d'un an à cause du COVID-19, l'Euro se joue dans 11 villes européennes. L'Italie remporte le titre face à l'Angleterre à Wembley aux tirs au but.",
+      "Reporté d'un an à cause du COVID-19, l'Euro se joue dans 11 villes européennes. La finale à Wembley voit l'Angleterre s'incliner face à l'Italie aux tirs au but devant son public.",
     category: CATEGORIES.CULTUREL_SPORT,
     lat: 51.556,
     lng: -0.2795,
+    linkedTo: 50,
   },
   {
     id: 31,
@@ -474,6 +475,131 @@ const events = [
     category: CATEGORIES.TECH_ECONOMIE,
     lat: 59.437,
     lng: 24.7536,
+  },
+
+  // === 10 ÉVÉNEMENTS SUPPLÉMENTAIRES ===
+
+  // Géopolitique
+  {
+    id: 41,
+    title: "Référendum sur l'indépendance de l'Écosse",
+    date: '18 septembre 2014',
+    year: 2014,
+    description:
+      "L'Écosse organise un référendum sur son indépendance vis-à-vis du Royaume-Uni. Le « Non » l'emporte avec 55,3 % des voix, mais le débat relance la question de l'autonomie écossaise et des mouvements indépendantistes en Europe.",
+    category: CATEGORIES.GEOPOLITIQUE,
+    lat: 55.9533,
+    lng: -3.1883,
+  },
+  {
+    id: 42,
+    title: 'Mouvement des Gilets jaunes',
+    date: 'Novembre 2018',
+    year: 2018,
+    description:
+      "Un mouvement de protestation sociale éclate en France contre la hausse des taxes sur les carburants. Les manifestations, souvent violentes, se poursuivent pendant des mois et forcent le gouvernement à des concessions majeures.",
+    category: CATEGORIES.GEOPOLITIQUE,
+    lat: 48.8738,
+    lng: 2.295,
+  },
+  {
+    id: 43,
+    title: "Élection d'Emmanuel Macron",
+    date: '7 mai 2017',
+    year: 2017,
+    description:
+      "Emmanuel Macron est élu président de la République française à 39 ans, devenant le plus jeune président de l'histoire de France. Son mouvement En Marche ! bouleverse le paysage politique traditionnel français.",
+    category: CATEGORIES.GEOPOLITIQUE,
+    lat: 48.8566,
+    lng: 2.3522,
+    linkedTo: 42,
+  },
+
+  // Catastrophes
+  {
+    id: 44,
+    title: "Éruption de l'Eyjafjallajökull — Chaos aérien",
+    date: 'Avril 2010',
+    year: 2010,
+    description:
+      "Le nuage de cendres du volcan islandais Eyjafjallajökull provoque la plus grande fermeture de l'espace aérien européen depuis la Seconde Guerre mondiale. Plus de 100 000 vols sont annulés en une semaine.",
+    category: CATEGORIES.CATASTROPHES,
+    lat: 48.3538,
+    lng: 11.786,
+    linkedTo: 17,
+  },
+  {
+    id: 45,
+    title: 'Incendies dévastateurs en Grèce',
+    date: 'Été 2023',
+    year: 2023,
+    description:
+      "La Grèce subit une vague d'incendies sans précédent, dont le plus grand feu de forêt jamais enregistré dans l'UE près d'Alexandroupolis. Des dizaines de milliers de personnes sont évacuées dans tout le pays.",
+    category: CATEGORIES.CATASTROPHES,
+    lat: 38.0,
+    lng: 23.7275,
+    linkedTo: 23,
+  },
+
+  // Culturel/Sport
+  {
+    id: 46,
+    title: "Eurovision 2022 — Victoire de l'Ukraine",
+    date: 'Mai 2022',
+    year: 2022,
+    description:
+      "Le groupe ukrainien Kalush Orchestra remporte l'Eurovision à Turin avec « Stefania », dans un contexte de guerre en Ukraine. La victoire, portée par un élan de solidarité, devient un symbole de soutien à l'Ukraine.",
+    category: CATEGORIES.CULTUREL_SPORT,
+    lat: 45.0703,
+    lng: 7.6869,
+    linkedTo: 14,
+  },
+
+  // Tech/Économie
+  {
+    id: 47,
+    title: 'Lancement de Spotify',
+    date: 'Octobre 2008',
+    year: 2008,
+    description:
+      "La plateforme suédoise de streaming musical Spotify est lancée. Elle révolutionne l'industrie musicale en proposant un accès légal et illimité à la musique, devenant un leader mondial du streaming.",
+    category: CATEGORIES.TECH_ECONOMIE,
+    lat: 59.3293,
+    lng: 18.0686,
+  },
+  {
+    id: 48,
+    title: "RGPD — Mise en application effective",
+    date: '25 mai 2018',
+    year: 2018,
+    description:
+      "Le RGPD entre en application après deux ans de période transitoire. Les premières amendes record tombent : Google est condamné à 50 millions d'euros par la CNIL française pour manque de transparence.",
+    category: CATEGORIES.TECH_ECONOMIE,
+    lat: 48.8566,
+    lng: 2.3522,
+    linkedTo: 36,
+  },
+  {
+    id: 49,
+    title: 'Faillite de FTX — Onde de choc crypto',
+    date: 'Novembre 2022',
+    year: 2022,
+    description:
+      "La plateforme d'échange de cryptomonnaies FTX fait faillite, entraînant des pertes de milliards de dollars. L'UE accélère le cadre réglementaire MiCA pour encadrer les cryptoactifs en Europe.",
+    category: CATEGORIES.TECH_ECONOMIE,
+    lat: 50.8503,
+    lng: 4.3517,
+  },
+  {
+    id: 50,
+    title: "Euro 2020 — L'Italie championne d'Europe",
+    date: 'Juillet 2021',
+    year: 2021,
+    description:
+      "Reporté d'un an à cause du COVID, l'Euro 2020 se tient dans 11 villes européennes. L'Italie triomphe en battant l'Angleterre aux tirs au but à Wembley, couronnant un parcours spectaculaire.",
+    category: CATEGORIES.CULTUREL_SPORT,
+    lat: 41.8902,
+    lng: 12.4922,
   },
 ]
 

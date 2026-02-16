@@ -3,8 +3,10 @@ import { useEffect, useRef, useCallback } from 'react'
 const MIN_YEAR = 2000
 const MAX_YEAR = 2025
 
-export default function Timeline({ year, setYear, isPlaying, setIsPlaying }) {
+export default function Timeline({ year, setYear, isPlaying, setIsPlaying, yearRange }) {
   const intervalRef = useRef(null)
+  const rangeMin = yearRange ? yearRange[0] : MIN_YEAR
+  const rangeMax = yearRange ? yearRange[1] : MAX_YEAR
 
   const stopPlaying = useCallback(() => {
     setIsPlaying(false)
@@ -18,21 +20,21 @@ export default function Timeline({ year, setYear, isPlaying, setIsPlaying }) {
     setIsPlaying(true)
     intervalRef.current = setInterval(() => {
       setYear((prev) => {
-        if (prev >= MAX_YEAR) {
+        if (prev >= rangeMax) {
           stopPlaying()
-          return MAX_YEAR
+          return rangeMax
         }
         return prev + 1
       })
     }, 1000)
-  }, [setYear, setIsPlaying, stopPlaying])
+  }, [setYear, setIsPlaying, stopPlaying, rangeMax])
 
   const togglePlay = () => {
     if (isPlaying) {
       stopPlaying()
     } else {
-      if (year >= MAX_YEAR) {
-        setYear(MIN_YEAR)
+      if (year >= rangeMax) {
+        setYear(rangeMin)
       }
       startPlaying()
     }
@@ -54,7 +56,7 @@ export default function Timeline({ year, setYear, isPlaying, setIsPlaying }) {
     }
   }
 
-  const progress = ((year - MIN_YEAR) / (MAX_YEAR - MIN_YEAR)) * 100
+  const progress = ((year - rangeMin) / (rangeMax - rangeMin || 1)) * 100
 
   return (
     <div className="bg-zinc-800/90 backdrop-blur-sm border-t border-zinc-700 px-4 py-3 sm:px-8 sm:py-4">
@@ -86,15 +88,15 @@ export default function Timeline({ year, setYear, isPlaying, setIsPlaying }) {
             </div>
             <input
               type="range"
-              min={MIN_YEAR}
-              max={MAX_YEAR}
+              min={rangeMin}
+              max={rangeMax}
               value={year}
               onChange={handleSliderChange}
               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
             />
             <div className="flex justify-between mt-1 text-xs text-zinc-500">
-              <span>{MIN_YEAR}</span>
-              <span>{MAX_YEAR}</span>
+              <span>{rangeMin}</span>
+              <span>{rangeMax}</span>
             </div>
           </div>
 

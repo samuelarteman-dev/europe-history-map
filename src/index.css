@@ -24,6 +24,17 @@ body,
   border: none !important;
 }
 
+/* City label reset */
+.city-label {
+  background: transparent !important;
+  border: none !important;
+}
+
+.city-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
 /* Leaflet popup dark theme */
 .leaflet-popup-content-wrapper {
   background: #27272a !important;
