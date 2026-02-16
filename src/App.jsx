@@ -35,11 +35,11 @@ export default function App() {
   return (
     <div className="h-screen w-screen flex flex-col bg-zinc-900 text-white overflow-hidden">
       {/* Map area */}
-      <div className="flex-1 relative">
+      <div className="flex-1 relative min-h-0">
         <EventMap filteredEvents={filteredEvents} />
 
-        {/* Header */}
-        <div className="absolute top-4 left-4 z-[1000] pointer-events-none">
+        {/* Header — hidden on mobile to save space */}
+        <div className="absolute top-4 left-4 z-[1000] pointer-events-none hidden sm:block">
           <h1 className="text-lg sm:text-xl font-bold text-white drop-shadow-lg">
             Europe — Événements historiques
           </h1>
@@ -49,7 +49,7 @@ export default function App() {
         </div>
 
         {/* Category filters + year range — top right */}
-        <div className="absolute top-4 right-4 z-[1000]">
+        <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-[1000]">
           <CategoryFilter
             activeCategories={activeCategories}
             setActiveCategories={setActiveCategories}
@@ -59,17 +59,19 @@ export default function App() {
           />
         </div>
 
-        {/* Legend + back button — bottom left above timeline */}
-        <div className="absolute bottom-4 left-4 z-[1000] flex items-end gap-2">
-          <button
-            onClick={() => setScreen('home')}
-            className="bg-zinc-800/90 backdrop-blur-sm rounded-lg border border-zinc-700 px-3 py-2 shadow-xl text-xs text-zinc-300 hover:text-white hover:bg-zinc-700/90 transition-colors flex items-center gap-1.5"
-          >
-            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-            </svg>
-            Accueil
-          </button>
+        {/* Back button — top left on mobile, bottom left on desktop */}
+        <button
+          onClick={() => setScreen('home')}
+          className="absolute top-3 left-3 sm:bottom-4 sm:left-4 sm:top-auto z-[1000] bg-zinc-800/90 backdrop-blur-sm rounded-lg border border-zinc-700 px-3 py-2 shadow-xl text-xs text-zinc-300 hover:text-white hover:bg-zinc-700/90 transition-colors flex items-center gap-1.5 min-h-[44px] sm:min-h-0"
+        >
+          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+          Accueil
+        </button>
+
+        {/* Legend — bottom left on desktop, hidden on mobile (count is in hamburger) */}
+        <div className="absolute bottom-4 left-20 z-[1000] hidden sm:block">
           <Legend eventCount={filteredEvents.length} />
         </div>
       </div>

@@ -39,13 +39,13 @@ export default function HomeScreen({ onStart }) {
 
   return (
     <div className="h-screen w-screen bg-zinc-900 text-white flex items-center justify-center overflow-auto">
-      <div className="max-w-xl w-full mx-4 my-8">
+      <div className="max-w-xl w-full mx-4 sm:mx-4 my-6 sm:my-8 px-1 sm:px-0">
         {/* Header */}
-        <div className="text-center mb-10">
-          <h1 className="text-3xl sm:text-4xl font-bold mb-3 tracking-tight">
+        <div className="text-center mb-6 sm:mb-10">
+          <h1 className="text-2xl sm:text-4xl font-bold mb-2 sm:mb-3 tracking-tight">
             Europe : événements <span className="text-amber-400">2000–2025</span>
           </h1>
-          <p className="text-zinc-400 text-sm sm:text-base leading-relaxed max-w-md mx-auto">
+          <p className="text-zinc-400 text-sm sm:text-base leading-relaxed max-w-md mx-auto px-2 sm:px-0">
             Explorez 25 ans d'histoire européenne sur une carte interactive.
             Géopolitique, catastrophes, culture et économie — filtrez et naviguez
             à travers les événements qui ont façonné le continent.
@@ -53,10 +53,10 @@ export default function HomeScreen({ onStart }) {
         </div>
 
         {/* Filters card */}
-        <div className="bg-zinc-800/80 backdrop-blur-sm rounded-xl border border-zinc-700 p-6 shadow-2xl mb-6">
+        <div className="bg-zinc-800/80 backdrop-blur-sm rounded-xl border border-zinc-700 p-4 sm:p-6 shadow-2xl mb-4 sm:mb-6">
           {/* Year range */}
-          <div className="mb-6">
-            <h3 className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-4">
+          <div className="mb-5 sm:mb-6">
+            <h3 className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3 sm:mb-4">
               Plage d'années
             </h3>
             <div className="flex items-center gap-4 mb-3">
@@ -68,27 +68,27 @@ export default function HomeScreen({ onStart }) {
                 {yearRange[1]}
               </span>
             </div>
-            <div className="space-y-3">
+            <div className="space-y-4 sm:space-y-3">
               <div>
-                <label className="text-xs text-zinc-500 mb-1 block">Année début</label>
+                <label className="text-xs text-zinc-500 mb-1.5 sm:mb-1 block">Année début</label>
                 <input
                   type="range"
                   min={MIN_YEAR}
                   max={MAX_YEAR}
                   value={yearRange[0]}
                   onChange={handleMinYear}
-                  className="w-full h-2 bg-zinc-700 rounded-full cursor-pointer accent-amber-500"
+                  className="w-full h-3 sm:h-2 bg-zinc-700 rounded-full cursor-pointer accent-amber-500"
                 />
               </div>
               <div>
-                <label className="text-xs text-zinc-500 mb-1 block">Année fin</label>
+                <label className="text-xs text-zinc-500 mb-1.5 sm:mb-1 block">Année fin</label>
                 <input
                   type="range"
                   min={MIN_YEAR}
                   max={MAX_YEAR}
                   value={yearRange[1]}
                   onChange={handleMaxYear}
-                  className="w-full h-2 bg-zinc-700 rounded-full cursor-pointer accent-amber-500"
+                  className="w-full h-3 sm:h-2 bg-zinc-700 rounded-full cursor-pointer accent-amber-500"
                 />
               </div>
             </div>
@@ -103,20 +103,20 @@ export default function HomeScreen({ onStart }) {
               <div className="flex gap-2">
                 <button
                   onClick={selectAll}
-                  className="text-xs text-amber-400 hover:text-amber-300 transition-colors"
+                  className="text-xs text-amber-400 hover:text-amber-300 transition-colors py-1 px-1"
                 >
                   Tout
                 </button>
                 <span className="text-zinc-600">|</span>
                 <button
                   onClick={selectNone}
-                  className="text-xs text-amber-400 hover:text-amber-300 transition-colors"
+                  className="text-xs text-amber-400 hover:text-amber-300 transition-colors py-1 px-1"
                 >
                   Aucun
                 </button>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {ALL_CATEGORIES.map((category) => {
                 const isActive = selectedCategories.includes(category)
                 const color = CATEGORY_COLORS[category]
@@ -124,20 +124,20 @@ export default function HomeScreen({ onStart }) {
                   <button
                     key={category}
                     onClick={() => toggleCategory(category)}
-                    className={`flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm transition-all border ${
+                    className={`flex items-center gap-2.5 px-3 py-3 sm:py-2.5 rounded-lg text-sm transition-all border min-h-[44px] ${
                       isActive
                         ? 'bg-zinc-700 border-zinc-600 text-white'
                         : 'bg-zinc-800 border-zinc-700 text-zinc-500 opacity-60'
                     }`}
                   >
                     <span
-                      className="w-3 h-3 rounded-full flex-shrink-0 transition-opacity"
+                      className="w-3.5 h-3.5 sm:w-3 sm:h-3 rounded-full flex-shrink-0 transition-opacity"
                       style={{
                         backgroundColor: color,
                         opacity: isActive ? 1 : 0.3,
                       }}
                     />
-                    <span className="text-xs sm:text-sm whitespace-nowrap">{category}</span>
+                    <span className="text-sm sm:text-sm">{category}</span>
                   </button>
                 )
               })}
@@ -148,7 +148,7 @@ export default function HomeScreen({ onStart }) {
         {/* Start button */}
         <button
           onClick={handleStart}
-          className="w-full py-3.5 bg-amber-500 hover:bg-amber-400 text-zinc-900 font-bold text-base rounded-xl transition-colors shadow-lg shadow-amber-500/20 active:scale-[0.98]"
+          className="w-full py-4 sm:py-3.5 bg-amber-500 hover:bg-amber-400 text-zinc-900 font-bold text-base sm:text-base rounded-xl transition-colors shadow-lg shadow-amber-500/20 active:scale-[0.98] min-h-[48px]"
         >
           Explorer la carte
         </button>

@@ -190,8 +190,8 @@ export default function EventMap({ filteredEvents }) {
           position={[event.lat, event.lng]}
           icon={createMarkerIcon(event.category)}
         >
-          <Popup className="custom-popup">
-            <div className="min-w-[200px]">
+          <Popup className="custom-popup" maxWidth={280} minWidth={180} autoPanPadding={[20, 60]}>
+            <div className="min-w-[160px] max-w-[260px]">
               <div className="flex items-center gap-2 mb-1">
                 <span
                   className="inline-block w-3 h-3 rounded-full flex-shrink-0"

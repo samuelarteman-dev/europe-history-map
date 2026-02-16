@@ -59,12 +59,12 @@ export default function Timeline({ year, setYear, isPlaying, setIsPlaying, yearR
   const progress = ((year - rangeMin) / (rangeMax - rangeMin || 1)) * 100
 
   return (
-    <div className="bg-zinc-800/90 backdrop-blur-sm border-t border-zinc-700 px-4 py-3 sm:px-8 sm:py-4">
+    <div className="bg-zinc-800/90 backdrop-blur-sm border-t border-zinc-700 px-3 py-2.5 sm:px-8 sm:py-4">
       <div className="max-w-5xl mx-auto">
-        <div className="flex items-center gap-3 sm:gap-5">
+        <div className="flex items-center gap-2 sm:gap-5">
           <button
             onClick={togglePlay}
-            className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-zinc-700 hover:bg-zinc-600 transition-colors flex items-center justify-center text-white border border-zinc-600"
+            className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-zinc-700 hover:bg-zinc-600 transition-colors flex items-center justify-center text-white border border-zinc-600 min-w-[44px] min-h-[44px]"
             aria-label={isPlaying ? 'Pause' : 'Play'}
           >
             {isPlaying ? (
@@ -79,7 +79,7 @@ export default function Timeline({ year, setYear, isPlaying, setIsPlaying, yearR
             )}
           </button>
 
-          <div className="flex-1 relative">
+          <div className="flex-1 relative min-w-0">
             <div className="relative h-2 bg-zinc-700 rounded-full overflow-hidden">
               <div
                 className="absolute h-full bg-amber-500 rounded-full transition-all duration-200"
@@ -93,15 +93,16 @@ export default function Timeline({ year, setYear, isPlaying, setIsPlaying, yearR
               value={year}
               onChange={handleSliderChange}
               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+              style={{ minHeight: '44px', top: '-16px' }}
             />
-            <div className="flex justify-between mt-1 text-xs text-zinc-500">
+            <div className="hidden sm:flex justify-between mt-1 text-xs text-zinc-500">
               <span>{rangeMin}</span>
               <span>{rangeMax}</span>
             </div>
           </div>
 
-          <div className="flex-shrink-0 text-center min-w-[60px]">
-            <span className="text-2xl sm:text-3xl font-bold text-amber-400 tabular-nums">
+          <div className="flex-shrink-0 text-center min-w-[44px] sm:min-w-[60px]">
+            <span className="text-lg sm:text-3xl font-bold text-amber-400 tabular-nums">
               {year}
             </span>
           </div>
