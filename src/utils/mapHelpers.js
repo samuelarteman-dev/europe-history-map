@@ -19,10 +19,14 @@ export function createMarkerIcon(category) {
   })
 }
 
-export function getFilteredEvents(events, year, activeCategories) {
+export function getFilteredEvents(events, year, activeCategories, yearRange) {
+  const [minYear, maxYear] = yearRange || [2000, 2025]
   return events.filter(
     (event) =>
-      event.year <= year && activeCategories.includes(event.category)
+      event.year <= year &&
+      event.year >= minYear &&
+      event.year <= maxYear &&
+      activeCategories.includes(event.category)
   )
 }
 
